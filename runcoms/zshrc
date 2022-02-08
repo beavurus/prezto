@@ -12,8 +12,21 @@ fi
 
 # Customize to your needs...
 
+# Source Zplug.
+source "${ZPLUG_HOME}/init.zsh"
+
+# Source custom files
 for ZSH_FILE in "${ZDOTDIR:-$HOME}"/zsh.d/*.zsh(N); do
 	source "${ZSH_FILE}"
 done
 
+# Functions
 export fpath=($ZDOTDIR/functions $fpath)
+
+# General Functions
+zsource()
+{
+  emulate -L zsh
+  echo Loading "${ZDOTDIR:-$HOME}"/.zshrc
+  source "${ZDOTDIR:-$HOME}"/.zshrc
+}
