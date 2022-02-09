@@ -51,9 +51,9 @@ function prompt_beavy_async_callback {
       else
         # Git target detected, update the git fragment and redisplay the prompt.
         _prompt_beavy_git_repo_name="%F{14}$(git config --get user.name)%f"
-        _prompt_beavy_pwd_repo="%B$(basename $(git-root))%b::${${PWD}/$(git-root)/}"
+        _prompt_beavy_pwd_repo="%B$(basename $(git-root))%b:${${PWD}/$(git-root)/}"
 
-        _prompt_beavy_git=$'\Uf113'" ${_prompt_beavy_git_repo_name}%B@%b\
+        _prompt_beavy_git="${_prompt_beavy_git_repo_name}%B@%b\
 ${_git_target} ${_git_post_target}"$'\n'
         _prompt_beavy_pwd="${_prompt_beavy_pwd_repo}"
         _prompt_beavy_user=""
@@ -146,20 +146,20 @@ function prompt_beavy_setup {
   # Set git-info parameters.
   zstyle ':prezto:module:git:info' verbose 'yes'
   zstyle ':prezto:module:git:info:action' format '%F{7}:%f%%B%F{9}%s%f%%b'
-  zstyle ':prezto:module:git:info:added' format ' %%B%F{2}'$'\Ufa00''%f%%b'
-  zstyle ':prezto:module:git:info:ahead' format ' %%B%F{13}⬆%f%%b'
-  zstyle ':prezto:module:git:info:behind' format ' %%B%F{13}⬇%f%%b'
+  zstyle ':prezto:module:git:info:added' format ' %%B%F{2}'$'\Uf457''%f%%b %a'
+  zstyle ':prezto:module:git:info:ahead' format ' %%B%F{13}'$'\Uf431''%f%%b'
+  zstyle ':prezto:module:git:info:behind' format ' %%B%F{13}'$'\Uf433''%f%%b'
   zstyle ':prezto:module:git:info:branch' format ' %%B%%F{3}%b%%f%%b'
   zstyle ':prezto:module:git:info:commit' format ' %%B%F{3}%.7c%f%%b'
-  zstyle ':prezto:module:git:info:deleted' format ' %%B%F{1}✖%f%%b'
-  zstyle ':prezto:module:git:info:modified' format ' %%B%F{4}✱%f%%b'
+  zstyle ':prezto:module:git:info:deleted' format ' %%B%F{1}'$'\Uf458''%f%%b %d'
+  zstyle ':prezto:module:git:info:modified' format ' %%B%F{4}'$'\Uf459''%f%%b %m'
   zstyle ':prezto:module:git:info:position' format ' %%B%F{13}%p%f%%b'
-  zstyle ':prezto:module:git:info:renamed' format ' %%B%F{5}➜%f%%b'
-  zstyle ':prezto:module:git:info:stashed' format ' %%B%F{6}✭%f%%b'
+  zstyle ':prezto:module:git:info:renamed' format ' %%B%F{5}'$'\Uf45a''%f%%b %r'
+  zstyle ':prezto:module:git:info:stashed' format ' %%B%F{6}'$'\Uf401''%f%%b %S'
   zstyle ':prezto:module:git:info:unmerged' format ' %%B%F{3}═%f%%b'
-  zstyle ':prezto:module:git:info:untracked' format ' %%B%F{7}'$'\Uf444''%f%%b'
+  zstyle ':prezto:module:git:info:untracked' format ' %%B%F{7}'$'\Ufc02''%f%%b %u'
   zstyle ':prezto:module:git:info:keys' format \
-    'status' '%b %p %c:%s%A%B%S%a%d%m%r%U%u'
+    'status' '%b %p %c:[%s%A%B%S%a%d%m%r%U%u ]'
 
   # Set python-info parameters.
   zstyle ':prezto:module:python:info:virtualenv' format '%f%F{3}(%v)%F{7} '
