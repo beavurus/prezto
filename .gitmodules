@@ -29,3 +29,9 @@
 	path = modules/prompt/external/powerlevel10k
 	url = https://github.com/romkatv/powerlevel10k.git
 	shallow = true
+[submodule "modules/lazy-load"]
+	path = modules/lazy-load
+	url = git@github.com:xcv58/zsh-lazy-load.git
+[submodule "modules/zsh-vim-mode"]
+	path = modules/zsh-vim-mode
+	url = git@github.com:softmoth/zsh-vim-mode

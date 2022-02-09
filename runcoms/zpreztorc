@@ -37,10 +37,12 @@ zstyle ':prezto:load' pmodule \
   'directory' \
   'spectrum' \
   'utility' \
+  'node' \
   'completion' \
   'syntax-highlighting' \
   'history-substring-search' \
   'autosuggestions' \
+  'zsh-vim-mode' \
   'prompt' \
   'git' \
   'ssh'

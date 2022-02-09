@@ -4,6 +4,10 @@
 # Authors:
 #   Sorin Ionescu <sorin.ionescu@gmail.com>
 #
+# zmodload zsh/zprof
+
+# Removes Windows Path -- Keep this to speed up tab completion
+unsetopt PATH_DIRS
 
 # Source Prezto.
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
@@ -13,7 +17,7 @@ fi
 # Customize to your needs...
 
 # Source Zplug.
-source "${ZPLUG_HOME}/init.zsh"
+# source "${ZPLUG_HOME}/init.zsh"
 
 # Source custom files
 for ZSH_FILE in "${ZDOTDIR:-$HOME}"/zsh.d/*.zsh(N); do
@@ -21,12 +25,19 @@ for ZSH_FILE in "${ZDOTDIR:-$HOME}"/zsh.d/*.zsh(N); do
 done
 
 # Functions
-export fpath=($ZDOTDIR/functions $fpath)
+# export fpath=($ZDOTDIR/functions $fpath)
 
 # General Functions
 zsource()
 {
-  emulate -L zsh
   echo Loading "${ZDOTDIR:-$HOME}"/.zshrc
   source "${ZDOTDIR:-$HOME}"/.zshrc
 }
+
+timezsh()
+{
+    _shell=${1-$SHELL}
+    for i in $(seq 1 10); do echo $(/usr/bin/time ${_shell} -i -c exit); done
+}
+
+# zprof
